@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SpendWise AI Pro – Smart Budget Advisor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060a1c;--gl:rgba(255,255,255,.075);--ln:rgba(255,255,255,.16);--tx:#f3f5ff;--mu:#a9b2d6;--p:#7b6cff;--k:#ff4fa3;--c:#22d3ee;--g:#34e3a0;--y:#ffc857;--r:#ff6b7a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#060a1c}}
+:root[data-theme="dark"]{--bg:#060a1c}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--tx);font-family:'Plus Jakarta Sans',system-ui,sans-serif;overflow-x:hidden}
+.o{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;animation:fl 16s ease-in-out infinite alternate}
+.o1{width:360px;height:360px;background:var(--p);top:-100px;left:-90px;opacity:.6}
+.o2{width:320px;height:320px;background:var(--k);bottom:-90px;right:-80px;opacity:.45;animation-delay:-6s}
+.o3{width:260px;height:260px;background:var(--c);top:40%;right:-60px;opacity:.3;animation-delay:-10s}
+.o4{width:220px;height:220px;background:var(--y);bottom:20%;left:-60px;opacity:.18;animation-delay:-3s}
+@keyframes fl{to{transform:translate(50px,-60px) scale(1.25)}}
+main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:18px 16px 50px}
+h1,h2,h3,.sg{font-family:'Sora',sans-serif;margin:0}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.lg{display:flex;align-items:center;gap:10px;font:700 18px 'Sora'}
+.lg i{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--p),var(--k));display:grid;place-items:center;font-style:normal;box-shadow:0 6px 18px rgba(123,108,255,.5)}
+.pill{font-size:12px;padding:6px 12px;border-radius:99px;border:1px solid var(--ln);background:var(--gl);color:var(--mu)}
+.hero h1{font-size:clamp(30px,8vw,46px);line-height:1.08;letter-spacing:-.02em;background:linear-gradient(95deg,#fff,var(--c) 45%,var(--k));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mu);margin:10px 0 18px;line-height:1.55}
+.stp{display:flex;gap:8px;margin:12px 0 16px}
+.stp div{flex:1;font-size:11px;color:var(--mu);text-align:center}
+.stp i{display:block;height:5px;border-radius:9px;background:var(--ln);margin-bottom:6px;transition:.4s}
+.stp .on{color:var(--tx)}.stp .on i{background:linear-gradient(90deg,var(--c),var(--p),var(--k))}
+.card{background:var(--gl);border:1px solid var(--ln);border-radius:24px;padding:20px;backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);box-shadow:0 20px 50px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12);animation:up .5s ease;margin-bottom:14px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+.card h2{font-size:22px}.sub{color:var(--mu);font-size:14px;margin:4px 0 6px;line-height:1.5}
+label{display:block;font-size:12px;color:var(--mu);margin:14px 0 6px;font-weight:500}
+.f{display:flex;align-items:center;background:rgba(5,8,25,.45);border:1px solid var(--ln);border-radius:14px;padding:0 14px;transition:.2s}
+.f:focus-within{border-color:var(--c);box-shadow:0 0 0 3px rgba(34,211,238,.18)}
+.f span{color:var(--c);font-weight:600;margin-right:8px;font-size:14px}
+input,select{width:100%;background:none;border:0;outline:0;color:var(--tx);font:500 16px 'Plus Jakarta Sans',sans-serif;padding:13px 0}
+select{background:rgba(5,8,25,.45);border:1px solid var(--ln);border-radius:14px;padding:13px}
+select option{color:#111}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0 12px}
+.row{display:flex;gap:10px;margin-top:22px}
+button{flex:1;border:0;border-radius:14px;padding:14px;font:600 15px 'Plus Jakarta Sans',sans-serif;color:#fff;cursor:pointer;background:linear-gradient(95deg,var(--p),var(--k));box-shadow:0 10px 26px rgba(123,108,255,.4);transition:.2s}
+button:active{transform:scale(.97)}
+button.gh{background:var(--gl);border:1px solid var(--ln);box-shadow:none;flex:.5}
+.err{color:var(--r);font-size:13px;min-height:16px;margin-top:8px}
+.tax{margin-top:14px;padding:13px 14px;border-radius:14px;background:rgba(34,211,238,.09);border:1px solid rgba(34,211,238,.3);font-size:14px;line-height:1.5}
+.tabs{display:flex;gap:6px;padding:5px;border-radius:16px;background:var(--gl);border:1px solid var(--ln);margin-bottom:14px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.tabs button{background:none;box-shadow:none;color:var(--mu);padding:11px 6px;font-size:13px}
+.tabs button.on{background:linear-gradient(95deg,var(--p),var(--k));color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.k{background:rgba(5,8,25,.4);border:1px solid var(--ln);border-radius:16px;padding:14px}
+.k small{color:var(--mu);display:block;font-size:11px;margin-bottom:4px}.k b{font:700 19px 'Sora'}
+.k.w{grid-column:1/-1}
+.sc{display:flex;align-items:center;gap:16px}
+.ring{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;flex:none}
+.ring span{width:74px;height:74px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font:800 26px 'Sora'}
+.dn{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.dn .ring span{font-size:13px;color:var(--mu);font-weight:500;font-family:'Plus Jakarta Sans'}
+.lgd{flex:1;min-width:160px;font-size:13px}
+.lgd div{display:flex;justify-content:space-between;gap:8px;padding:4px 0}
+.lgd i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px}
+.tip{padding:12px 14px;border-radius:14px;margin-top:10px;font-size:14px;line-height:1.5;background:rgba(255,79,163,.09);border:1px solid rgba(255,79,163,.3)}
+.tip.ok{background:rgba(52,227,160,.09);border-color:rgba(52,227,160,.3)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+td,th{padding:9px 6px;border-bottom:1px solid var(--ln);text-align:right}td:first-child,th:first-child{text-align:left}th{color:var(--mu);font-weight:500}
+.ch{height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 2px}
+.m{max-width:88%;padding:11px 14px;border-radius:18px;font-size:14px;line-height:1.55;animation:up .3s}
+.m.a{background:rgba(255,255,255,.09);border:1px solid var(--ln);border-bottom-left-radius:5px;align-self:flex-start}
+.m.u{background:linear-gradient(95deg,var(--p),var(--k));border-bottom-right-radius:5px;align-self:flex-end}
+.m ul{margin:6px 0 0;padding-left:18px}.m li{margin:3px 0}
+.ty span{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:var(--c);animation:bn 1s infinite}
+.ty span:nth-child(2){animation-delay:.15s}.ty span:nth-child(3){animation-delay:.3s}
+@keyframes bn{50%{transform:translateY(-6px);opacity:.4}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips button{flex:none;padding:9px 13px;font-size:13px;background:var(--gl);border:1px solid var(--ln);box-shadow:none}
+.ft{color:var(--mu);font-size:12px;text-align:center;margin-top:14px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="o o1"></div><div class="o o2"></div><div class="o o3"></div><div class="o o4"></div>
+<main>
+<div class="nav"><div class="lg"><i>✦</i>SpendWise AI</div><div class="pill" id="cp"></div></div>
+<div class="hero" id="hero"><h1>Your personal AI money advisor.</h1><p>Share your salary and spending. Get your tax, a money health score, an ideal budget, and a plan to save more and enjoy time with family.</p></div>
+<div class="stp" id="stp"></div>
+<div id="app"></div>
+<div class="ft">Estimates only. Tax rules are simplified and this is not financial or tax advice.<br>Advisor answers come from a built-in rules engine, not a live AI model.</div>
+</main>
+<script>
+const I=Infinity,sum=a=>a.reduce((s,x)=>s+x,0);
+const slab=(x,s)=>{let t=0,p=0;for(const[l,r]of s){if(x>p)t+=(Math.min(x,l)-p)*r;p=l}return t};
+const DI='low-cost index funds, government bonds and gold';
+const DT='Use every standard deduction, put money in tax-advantaged retirement accounts, and check your official tax portal.';
+const C={
+IN:{n:'India',f:'🇮🇳',c:'INR',s:'₹',l:'en-IN',note:'New regime FY25-26, standard deduction, 87A rebate, 4% cess',inv:'Nifty 50 index funds (SIP), PPF/EPF and sovereign gold bonds',tt:'Claim employer NPS (80CCD(2)) and health insurance. Salary up to ₹12.75L pays no tax in the new regime.',tax:a=>{const x=a-75000;return x<=1200000?0:slab(x,[[4e5,0],[8e5,.05],[12e5,.1],[16e5,.15],[2e6,.2],[24e5,.25],[I,.3]])*1.04}},
+US:{n:'United States',f:'🇺🇸',c:'USD',s:'$',l:'en-US',note:'Federal only, single filer, standard deduction',inv:'401(k) with employer match, Roth IRA and S&P 500 index ETFs',tt:'Always take the full 401(k) employer match, then fund an IRA or HSA.',tax:a=>slab(Math.max(0,a-15000),[[11925,.1],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[I,.37]])},
+UK:{n:'United Kingdom',f:'🇬🇧',c:'GBP',s:'£',l:'en-GB',note:'Income tax only, excludes National Insurance',inv:'Stocks and Shares ISA, workplace pension and gilts',tt:'Use your ISA allowance and pension salary sacrifice to cut tax.',tax:a=>slab(a,[[12570,0],[50270,.2],[125140,.4],[I,.45]])},
+DE:{n:'Germany',f:'🇩🇪',c:'EUR',s:'€',l:'de-DE',note:'Approx. income tax, excludes social security',inv:'Global ETFs (savings plan), Riester/Rürup and Tagesgeld',tt:'Use the Sparer-Pauschbetrag and claim Werbungskosten in your tax return.',tax:a=>slab(a,[[12096,0],[17443,.2],[68480,.3],[277825,.42],[I,.45]])},
+AE:{n:'UAE',f:'🇦🇪',c:'AED',s:'AED ',l:'en-AE',note:'No personal income tax',inv:'Global ETFs, gold and high-yield savings',tt:'No income tax, so focus on saving the difference and avoiding high-interest debt.',tax:()=>0},
+SA:{n:'Saudi Arabia',f:'🇸🇦',c:'SAR',s:'SAR ',l:'en-SA',note:'No personal income tax for individuals',inv:'Global ETFs, gold and Tadawul funds',tt:'No income tax, so build savings and avoid overspending.',tax:()=>0},
+QA:{n:'Qatar',f:'🇶🇦',c:'QAR',s:'QAR ',l:'en-QA',note:'No personal income tax',inv:'Global ETFs, gold and fixed deposits',tt:'No income tax, so build savings and avoid overspending.',tax:()=>0},
+CA:{n:'Canada',f:'🇨🇦',c:'CAD',s:'C$',l:'en-CA',note:'Federal only, basic personal amount',inv:'TFSA, RRSP and broad index ETFs',tt:'Maximise your TFSA and RRSP; RRSP contributions lower taxable income.',tax:a=>slab(Math.max(0,a-16129),[[57375,.15],[114750,.205],[177882,.26],[253414,.29],[I,.33]])},
+AU:{n:'Australia',f:'🇦🇺',c:'AUD',s:'A$',l:'en-AU',note:'Resident rates + 2% Medicare',inv:'Superannuation top-ups and low-cost index ETFs',tt:'Make concessional super contributions to cut tax.',tax:a=>slab(a,[[18200,0],[45000,.16],[135000,.3],[190000,.37],[I,.45]])+a*.02},
+NZ:{n:'New Zealand',f:'🇳🇿',c:'NZD',s:'NZ$',l:'en-NZ',note:'Resident income tax rates',inv:'KiwiSaver and index funds',tt:'Contribute enough to KiwiSaver to get the full employer match.',tax:a=>slab(a,[[15600,.105],[53500,.175],[78100,.3],[18e4,.33],[I,.39]])},
+SG:{n:'Singapore',f:'🇸🇬',c:'SGD',s:'S$',l:'en-SG',note:'Resident rates, approximate',inv:'CPF top-ups, SSB bonds and index ETFs',tt:'Top up your CPF Special Account for tax relief.',tax:a=>slab(a,[[2e4,0],[3e4,.02],[4e4,.035],[8e4,.07],[12e4,.115],[16e4,.15],[2e5,.18],[24e4,.19],[28e4,.195],[32e4,.2],[I,.22]])},
+MY:{n:'Malaysia',f:'🇲🇾',c:'MYR',s:'RM ',l:'en-MY',note:'Resident rates, approximate',inv:'EPF voluntary, ASB and index funds',tt:'Claim lifestyle, EPF and insurance reliefs in your tax return.',tax:a=>slab(a,[[5e3,0],[2e4,.01],[35e3,.03],[5e4,.06],[7e4,.11],[1e5,.19],[4e5,.25],[6e5,.26],[2e6,.28],[I,.3]])},
+JP:{n:'Japan',f:'🇯🇵',c:'JPY',s:'¥',l:'ja-JP',note:'National tax + approx. 10% resident tax',inv:'NISA, iDeCo and global index funds',tt:'Use NISA and iDeCo; both give tax advantages.',tax:a=>slab(Math.max(0,a-48e4),[[195e4,.05],[33e5,.1],[695e5/10,.2],[9e6,.23],[18e6,.33],[4e7,.4],[I,.45]])+Math.max(0,a-43e4)*.1},
+FR:{n:'France',f:'🇫🇷',c:'EUR',s:'€',l:'fr-FR',note:'Progressive income tax, approximate',inv:'PEA, Livret A and life insurance (assurance-vie)',tt:'Use a PEA and PER to reduce taxable income.',tax:a=>slab(a*.9,[[11497,0],[29315,.11],[83823,.3],[180294,.41],[I,.45]])},
+NL:{n:'Netherlands',f:'🇳🇱',c:'EUR',s:'€',l:'nl-NL',note:'Box 1 rates, before tax credits',inv:'Index ETFs, pension and savings account',tt:'Claim tax credits (heffingskortingen) and mortgage interest deduction.',tax:a=>slab(a,[[38441,.3582],[76817,.3748],[I,.495]])},
+IE:{n:'Ireland',f:'🇮🇪',c:'EUR',s:'€',l:'en-IE',note:'Income tax after basic credits, excludes USC/PRSI',inv:'Pension (PRSA), ETFs and State Savings',tt:'Pension contributions get tax relief at your top rate.',tax:a=>Math.max(0,slab(a,[[44e3,.2],[I,.4]])-4e3)},
+CH:{n:'Switzerland',f:'🇨🇭',c:'CHF',s:'CHF ',l:'de-CH',note:'Rough average of federal + cantonal tax',inv:'Pillar 3a, ETFs and savings account',tt:'Max out Pillar 3a each year for a direct tax deduction.',tax:a=>slab(a,[[15e3,0],[5e4,.08],[1e5,.15],[I,.25]])}
+};
+const X={
+IN:{ss:a=>a*.06,sn:'EPF / PF (about 12% of basic pay, goes into your own fund)',v:.12,vn:'GST'},
+US:{ss:a=>Math.min(a,176100)*.062+a*.0145,sn:'FICA: Social Security + Medicare (7.65%)',v:.07,vn:'Sales tax'},
+UK:{ss:a=>slab(a,[[12570,0],[50270,.08],[I,.02]]),sn:'National Insurance (8% / 2%)',v:.2,vn:'VAT'},
+DE:{ss:a=>Math.min(a,96600)*.2,sn:'Pension, health, unemployment, care (about 20%)',v:.19,vn:'VAT (MwSt)'},
+AE:{ss:()=>0,sn:'No social contribution for expats',v:.05,vn:'VAT'},
+SA:{ss:()=>0,sn:'No social contribution for expats',v:.15,vn:'VAT'},
+QA:{ss:()=>0,sn:'No social contribution for expats',v:0,vn:'No VAT'},
+CA:{ss:a=>(Math.min(a,71300)-3500)*.0595+Math.min(a,65700)*.0164,sn:'CPP + EI contributions',v:.12,vn:'GST/HST/PST'},
+AU:{ss:()=>0,sn:'Super is paid by your employer on top of salary',v:.1,vn:'GST'},
+NZ:{ss:a=>Math.min(a,139384)*.016,sn:'ACC earners levy (1.6%)',v:.15,vn:'GST'},
+SG:{ss:a=>Math.min(a/12,7400)*12*.2,sn:'CPF employee share (20%, citizens/PR)',v:.09,vn:'GST'},
+MY:{ss:a=>a*.11,sn:'EPF employee share (11%)',v:.08,vn:'Sales & service tax'},
+JP:{ss:a=>a*.15,sn:'Health, pension and employment insurance (about 15%)',v:.1,vn:'Consumption tax'},
+FR:{ss:a=>a*.22,sn:'Employee social contributions (about 22%)',v:.2,vn:'VAT (TVA)'},
+NL:{ss:()=>0,sn:'Social premiums are included in the Box 1 rate',v:.21,vn:'VAT (BTW)'},
+IE:{ss:a=>a*.04+slab(a,[[12012,.005],[27382,.02],[70044,.04],[I,.08]]),sn:'PRSI (4%) + USC',v:.23,vn:'VAT'},
+CH:{ss:a=>a*.064,sn:'AHV/IV/EO + unemployment (about 6.4%)',v:.081,vn:'VAT (MWST)'}};
+// key,label,icon,limit share of take-home,type (n need, w want, f fun)
+const F1=[['rent','Rent / home','🏠',.3,'n'],['emi','EMI / loans','💳',.2,'n'],['petrol','Petrol / transport','⛽',.08,'n'],['food','Food & groceries','🍛',.15,'n'],['bills','Charges: power, mobile, net','🔌',.05,'n'],['ins','Insurance','🛡️',.07,'n'],['health','Medical / health','🩺',.05,'n'],['edu','Education / kids fees','🎓',.1,'n'],['fun','Family outings & fun','🎉',.1,'f'],['other','Shopping & subscriptions','🛍️',.08,'w']];
+const F2=[['family','Money sent to family / month','👨‍👩‍👧'],['invest','Investments / month (SIP, stocks, gold)','📈'],['save','Cash savings / month','🏦'],['fund','Emergency fund saved so far (total)','🛟']];
+const HINT={rent:'Try a roommate, a cheaper area, or renegotiate at renewal.',emi:'Prepay the highest-interest loan or refinance at a lower rate.',petrol:'Carpool, use public transport, or batch your trips.',food:'Plan weekly meals, cook at home, cut delivery apps.',bills:'Switch to a cheaper plan and use efficient appliances.',ins:'Compare plans online and remove duplicate cover.',health:'Use preventive check-ups and generic medicines.',edu:'Look for scholarships, fee instalments and free courses.',other:'Cancel unused subscriptions and use a 48-hour wait rule.'};
+let st=0,tab=0,M=[],busy=false,R=null,D={country:'IN',name:'',sal:'',age:'',fam:'3'};
+[...F1,...F2].forEach(f=>D[f[0]]='');
+const $=id=>document.getElementById(id),v=k=>+D[k]||0;
+const fm=n=>(n<0?'-':'')+C[D.country].s+new Intl.NumberFormat(C[D.country].l,{maximumFractionDigits:0}).format(Math.abs(Math.round(n)));
+const li=a=>'<ul>'+a.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+function steps(){const L=['Profile','Expenses','Goals','Report'];$('stp').innerHTML=L.map((l,i)=>`<div class="${i<=st?'on':''}"><i></i>${l}</div>`).join('');$('cp').textContent=C[D.country].f+' '+C[D.country].c;$('hero').style.display=st==0?'block':'none'}
+function inp(f,ph){return `<div><label>${f[2]} ${f[1]}</label><div class="f"><span>${C[D.country].s.trim()}</span><input inputmode="decimal" type="number" min="0" placeholder="${ph||0}" value="${D[f[0]]}" data-k="${f[0]}"></div></div>`}
+function bind(){document.querySelectorAll('[data-k]').forEach(e=>e.oninput=()=>{D[e.dataset.k]=e.value;if(e.dataset.k=='sal')taxbox()})}
+function taxbox(){const el=$('tx');if(!el)return;const m=v('sal');if(!m){el.innerHTML='Enter your salary to see your estimated tax.';return}
+const t=C[D.country].tax(m*12)/12,q=X[D.country].ss(m*12)/12;el.innerHTML=`🧾 Income tax: <b>${fm(t)}</b> / month<br>🏛️ ${X[D.country].sn.split(' (')[0]}: <b>${fm(q)}</b> / month<br>💵 Estimated take-home: <b>${fm(m-t-q)}</b> / month (total tax ${((t+q)/m*100).toFixed(1)}%)<br><small style="color:var(--mu)">${C[D.country].note}</small>`}
+function render(){steps();const a=$('app');
+if(st==0){a.innerHTML=`<div class="card"><h2>Step 1 · Your profile</h2><p class="sub">Choose your country so we can estimate your tax.</p>
+<label>👤 Your name</label><div class="f"><input id="nm" placeholder="Your name" value="${D.name}"></div>
+<label>🌍 Country (currency)</label><select id="ct">${Object.keys(C).map(k=>`<option value="${k}" ${k==D.country?'selected':''}>${C[k].f} ${C[k].n} (${C[k].c})</option>`).join('')}</select>
+<div class="g2">${inp(['sal','Monthly gross salary','💰'])}${inp(['age','Age','🎂'],'25')}</div>${inp(['fam','Family members you support','👪'],'3')}
+<div class="tax" id="tx"></div><div class="err" id="er"></div>
+<div class="row"><button id="nx">Continue →</button></div></div>`;
+$('ct').onchange=e=>{D.country=e.target.value;render()};$('nm').oninput=e=>D.name=e.target.value;bind();taxbox();
+$('nx').onclick=()=>{if(v('sal')<=0){$('er').textContent='Please enter your salary to continue.';return}st=1;render()}}
+else if(st<3){const fs=st==1?F1:F2;
+a.innerHTML=`<div class="card"><h2>${st==1?'Step 2 · Monthly expenses':'Step 3 · Family, investing & savings'}</h2><p class="sub">${st==1?'Enter 0 if something does not apply.':'Money you send, invest and save, plus your current emergency fund.'}</p>
+<div class="g2">${fs.map(f=>inp(f)).join('')}</div><div class="row"><button class="gh" id="bk">← Back</button><button id="nx">${st==1?'Continue →':'Generate my report ✨'}</button></div></div>`;
+bind();$('bk').onclick=()=>{st--;render()};$('nx').onclick=()=>{st++;if(st==3){M=[];tab=0}render()}}
+else report()}
+function calc(){const m=v('sal'),tx=C[D.country].tax(m*12)/12,ss=X[D.country].ss(m*12)/12,net=m-tx-ss;
+const ex=F1.map(f=>({k:f[0],l:f[1],i:f[2],lim:f[3],t:f[4],a:v(f[0])}));
+const needs=sum(ex.filter(e=>e.t=='n').map(e=>e.a)),wants=sum(ex.filter(e=>e.t!='n').map(e=>e.a));
+const fam=v('family'),inv=v('invest'),sv=v('save'),spent=needs+wants,out=spent+fam+inv+sv,left=net-out;
+const srate=net>0?(inv+sv)/net*100:0;let pot=0,tips=[];
+ex.forEach(e=>{if(e.t=='f')return;const lim=e.lim*net;if(e.a>lim*1.05){const d=e.a-lim;pot+=d;tips.push({e,d,lim})}});
+let sc=100-Math.max(0,20-srate)*1.5-Math.min(40,pot/Math.max(net,1)*120);if(left<0)sc-=25;sc=Math.max(5,Math.min(100,Math.round(sc)));
+const mo=v('fund')/Math.max(1,spent+fam);const g=k=>ex.find(e=>e.k==k).a,base=g('food')*.5+g('petrol')+g('bills')+g('fun')+g('other'),vat=base-base/(1+X[D.country].v);
+return{m,tx,ss,vat,net,ex,needs,wants,fam,inv,sv,spent,out,left,srate,pot,tips,sc,mo}}
+function report(){R=calc();$('hero').style.display='none';const t=['📊 Overview','🤖 Advisor','🎉 Family','🧾 Tax'];
+$('app').innerHTML=`<div class="tabs">${t.map((x,i)=>`<button class="${i==tab?'on':''}" data-t="${i}">${x}</button>`).join('')}</div><div id="tb"></div><div class="row"><button class="gh" id="rs">↺ Start again</button></div>`;
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{tab=+b.dataset.t;report()});$('rs').onclick=()=>{st=0;render()};
+if(tab==0)overview();else if(tab==1)advisor();else if(tab==3)taxtab();else{$('tb').innerHTML=`<div class="card"><h2>🎉 Family fun plan</h2>${A('fun')}</div>`}}
+function overview(){const r=R,col=r.sc>=75?'var(--g)':r.sc>=50?'var(--y)':'var(--r)',lab=r.sc>=75?'Excellent':r.sc>=50?'Good, can improve':'Needs attention';
+const seg=[['Tax & contributions',r.tx+r.ss,'#8b8fb3'],['Needs',r.needs,'#7b6cff'],['Family support',r.fam,'#22d3ee'],['Wants & fun',r.wants,'#ff4fa3'],['Invest + save',r.inv+r.sv,'#34e3a0'],['Unallocated',Math.max(0,r.left),'#ffc857']].filter(s=>s[1]>0);
+const tot=sum(seg.map(s=>s[1]));let p=0;const cg=seg.map(s=>{const a=p/tot*100;p+=s[1];return `${s[2]} ${a}% ${p/tot*100}%`}).join(',');
+$('tb').innerHTML=`<div class="card"><h2>${D.name?D.name+'’s ':''}Money report</h2><p class="sub">${C[D.country].n} · monthly view in ${C[D.country].c}</p>
+<div class="sc"><div class="ring" style="background:conic-gradient(${col} ${r.sc*3.6}deg,var(--ln) 0)"><span>${r.sc}</span></div><div><h3>${lab}</h3><p class="sub" style="margin:4px 0 0">Money health score out of 100</p></div></div>
+<div class="grid"><div class="k"><small>Gross salary</small><b>${fm(r.m)}</b></div><div class="k"><small>Income tax + contributions</small><b>${fm(r.tx+r.ss)}</b></div>
+<div class="k"><small>Take-home</small><b>${fm(r.net)}</b></div><div class="k"><small>Total expenses</small><b>${fm(r.spent)}</b></div>
+<div class="k"><small>Family + invest + save</small><b>${fm(r.fam+r.inv+r.sv)}</b></div><div class="k"><small>${r.left<0?'Shortfall':'Left over'}</small><b style="color:${r.left<0?'var(--r)':'var(--g)'}">${fm(Math.abs(r.left))}</b></div>
+<div class="k w"><small>Possible monthly saving by cutting expenses</small><b style="color:var(--c)">${fm(r.pot)}</b> <span class="sub">(${fm(r.pot*12)} per year)</span></div></div>
+<h3>Where your salary goes</h3><div class="dn"><div class="ring" style="background:conic-gradient(${cg})"><span>${C[D.country].c}</span></div>
+<div class="lgd">${seg.map(s=>`<div><span><i style="background:${s[2]}"></i>${s[0]}</span><b>${(s[1]/tot*100).toFixed(0)}%</b></div>`).join('')}</div></div></div>
+<div class="card"><h3>Ideal budget vs yours</h3>${A('bud')}</div>
+<div class="card"><h3>✂️ How to reduce expenses</h3>${A('cut')}</div>`}
+function A(k){const r=R,n=C[D.country],net=Math.max(r.net,1);
+if(k=='cut'){if(!r.tips.length)return '<div class="tip ok"><b>✅ Well done.</b> Every category is within a healthy range. Keep your lifestyle steady as income grows.</div>';
+return r.tips.sort((a,b)=>b.d-a.d).map(t=>`<div class="tip"><b>${t.e.i} ${t.e.l}:</b> ${fm(t.e.a)} (${(t.e.a/net*100).toFixed(0)}% of take-home). Target about ${fm(t.lim)}. Save up to <b>${fm(t.d)}/month</b>. ${HINT[t.e.k]}</div>`).join('')+(r.left<0?`<div class="tip"><b>🚨 Deficit:</b> you spend ${fm(-r.left)} more than you earn. Fix this first.</div>`:'')}
+if(k=='bud'){const needs=r.needs+r.fam,wants=r.wants,sav=r.inv+r.sv,row=(l,p,a)=>`<tr><td>${l}</td><td>${fm(net*p)}</td><td>${fm(a)}</td><td style="color:${(l[0]=='S'?a>=net*p:a<=net*p)?'var(--g)':'var(--y)'}">${(a/net*100).toFixed(0)}%</td></tr>`;
+return `<p class="sub">The 50/30/20 rule on your take-home pay:</p><table><tr><th></th><th>Ideal</th><th>Yours</th><th>%</th></tr>${row('Needs (50%)',.5,needs)}${row('Wants & fun (30%)',.3,wants)}${row('Savings (20%)',.2,sav)}</table>`}
+if(k=='fun'){const f=r.left>0?Math.min(r.left*.5,net*.1):net*.05,fv=Math.max(f,r.ex.find(e=>e.k=='fun').a);
+return `<p class="sub">Spending on family time is healthy when it is planned. Suggested monthly fun budget: <b style="color:var(--c)">${fm(fv)}</b> (${(fv/net*100).toFixed(0)}% of take-home).</p>
+<div class="tip ok"><b>🌿 Free or low cost (${fm(fv*.25)})</b>${li(['Park picnic, beach or temple visit','Home movie night with snacks','Cook a special meal together','Board games, cricket or badminton at home','Visit relatives and grandparents'])}</div>
+<div class="tip ok"><b>🍽️ Weekend treats (${fm(fv*.5)})</b>${li(['Lunch at a family restaurant once or twice a month','Zoo, museum, theme park or local trip','Family sports day or cycling outing'])}</div>
+<div class="tip ok"><b>✈️ Big memory fund (${fm(fv*.25)}/month = ${fm(fv*3)} per year)</b>${li(['Save for one annual family trip','Book early and travel off-season to cut cost','Set aside the amount on salary day, not at the end of the month'])}</div>
+${r.left<0?'<div class="tip"><b>⚠️ Note:</b> you are overspending now, so keep fun to the free and low-cost list until the deficit is fixed.</div>':''}`}
+if(k=='inv'){const ef=r.mo<3?'Emergency fund first: put about 70% of your monthly saving into a safe account until you reach 6 months of expenses.':r.mo<6?'Split 50/50 between your emergency fund and investing until you reach 6 months of expenses.':'Your emergency fund is healthy, so invest about 85% and keep 15% for goals.';
+return `<b>Emergency fund:</b> ${r.mo.toFixed(1)} months saved (target 6). ${ef}<br><b>Ideas in ${n.n}:</b> ${n.inv||DI}.${li(['Invest the same amount on a fixed date every month','Keep 60% in broad index funds, 25% in bonds or fixed income, 15% in gold','Avoid chasing tips or high-risk schemes'])}<small style="color:var(--mu)">General guidance only, not personal investment advice.</small>`}
+if(k=='tax')return `<b>${n.n}:</b> ${n.tt||DT}<br>Income tax is <b>${fm(r.tx)}/month</b> and contributions are <b>${fm(r.ss)}/month</b>, together <b>${((r.tx+r.ss)/Math.max(r.m,1)*100).toFixed(1)}%</b> of gross salary. See the Tax tab for details.<br><small style="color:var(--mu)">${n.note}</small>`;
+if(k=='ef'){const tg=6*(r.spent+r.fam),gap=Math.max(0,tg-v('fund'));const mon=gap&&(r.inv+r.sv)>0?Math.ceil(gap/(r.inv+r.sv)):0;return `Your monthly need is about <b>${fm(r.spent+r.fam)}</b>, so a 6-month emergency fund is <b>${fm(tg)}</b>. You have ${fm(v('fund'))} (${r.mo.toFixed(1)} months).${gap?` Gap: <b>${fm(gap)}</b>${mon?`. At your current saving pace that takes about ${mon} months if you put everything into it.`:'. Start by saving a fixed amount every month.'}`:' You have reached the target. Great!'}`}
+return ''}
+function taxtab(){const r=R,n=C[D.country],x=X[D.country],a=r.m*12,mr=(n.tax(a+1000)-n.tax(a))/1000*100,tot=r.tx+r.ss,row=(l,m)=>`<tr><td>${l}</td><td>${fm(m)}</td><td>${fm(m*12)}</td></tr>`;
+$('tb').innerHTML=`<div class="card"><h2>🧾 Tax in ${n.f} ${n.n}</h2><p class="sub">Currency: ${n.c} · ${n.note}</p>
+<div class="grid"><div class="k"><small>Effective tax rate</small><b>${(tot/Math.max(r.m,1)*100).toFixed(1)}%</b></div><div class="k"><small>Income tax slab (marginal)</small><b>${mr.toFixed(0)}%</b></div></div>
+<table><tr><th></th><th>Monthly</th><th>Yearly</th></tr>${row('Gross salary',r.m)}${row('Income tax',-r.tx)}${row(x.sn.split(' (')[0],-r.ss)}${row('<b>Take-home</b>',r.net)}</table>
+<div class="tip ok"><b>🏛️ Contributions:</b> ${x.sn}.</div>
+<div class="tip"><b>🛒 Hidden ${x.vn}:</b> about ${(x.v*100).toFixed(1)}% is built into prices you pay. Your spending contains roughly <b>${fm(r.vat)}/month</b> (${fm(r.vat*12)}/year) of consumption tax. Total tax burden including this: <b>${fm(tot+r.vat)}/month</b>.</div>
+<div class="tip ok"><b>💡 Tax saving tip:</b> ${n.tt||DT}</div>
+<p class="sub">Simplified estimate for a single resident employee. Bonuses, local taxes and special deductions are not included. Check your official tax portal.</p></div>`}
+const CH=[['cut','✂️ Cut my expenses'],['fun','🎉 Family fun plan'],['inv','📈 Where to invest'],['bud','🧮 Ideal budget'],['tax','🧾 Tax tips'],['ef','🛟 Emergency fund']];
+function advisor(){if(!M.length){const r=R;M.push({r:'a',h:`Hi ${D.name||'there'}! 👋 I am your SpendWise advisor. I checked your numbers: take-home is <b>${fm(r.net)}</b> and you save or invest <b>${r.srate.toFixed(0)}%</b> of it. Your money health score is <b>${r.sc}/100</b>.${r.left<0?' You are overspending, so let us fix that first.':r.pot>0?` I found about <b>${fm(r.pot)}/month</b> you could save.`:' Your spending looks balanced.'} What would you like to explore?`})}
+$('tb').innerHTML=`<div class="card"><h2>🤖 AI Advisor</h2><div class="ch" id="ch"></div><div class="chips">${CH.map(c=>`<button data-q="${c[0]}">${c[1]}</button>`).join('')}</div></div>`;
+document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>ask(b.dataset.q));chat()}
+function chat(){const c=$('ch');if(!c)return;c.innerHTML=M.map(m=>`<div class="m ${m.r}">${m.h}</div>`).join('')+(busy?'<div class="m a ty"><span></span><span></span><span></span></div>':'');c.scrollTop=c.scrollHeight}
+function ask(k){if(busy)return;M.push({r:'u',h:CH.find(c=>c[0]==k)[1]});busy=true;chat();setTimeout(()=>{M.push({r:'a',h:A(k)});busy=false;chat()},900)}
+render();
+</script>
+</body>
+</html>
